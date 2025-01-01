@@ -11,6 +11,9 @@ export default function App() {
 function Counter() {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
+  const date = new Date();
+  date.setDate(date.getDate() + count);
+
   return (
     <div>
       <div>
@@ -23,6 +26,16 @@ function Counter() {
         <span>Count: {count} </span>
         <button onClick={() => setCount(count + step)}>+</button>
       </div>
+      <p>
+        <span>
+          {count === 0
+            ? "today is "
+            : count > 0
+            ? `${count} days from today is`
+            : `${count} days ago was `}
+        </span>
+        {date.toDateString()}{" "}
+      </p>
     </div>
   );
 }
