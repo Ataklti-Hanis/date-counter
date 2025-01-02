@@ -60,6 +60,12 @@ export default function App() {
 function Counter() {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(0);
+    setStep(1);
+  }
+
   const date = new Date();
   date.setDate(date.getDate() + count);
   return (
@@ -67,7 +73,7 @@ function Counter() {
       <div>
         <input
           type="range"
-          min="1"
+          min="0"
           max="10"
           onChange={(e) => setCount(setStep(Number(e.target.value)))}
         />
@@ -92,6 +98,9 @@ function Counter() {
         </span>
         {date.toDateString()}
       </p>
+      <div>
+        <button onClick={handleClick}>Reset</button>
+      </div>
     </div>
   );
 }
